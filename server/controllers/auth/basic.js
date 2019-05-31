@@ -20,7 +20,7 @@ const smtpTransport = nodemailer.createTransport({
   port: config.auth.mail.port,
   secure: true,
   auth: {
-    user: EMAIL,
+    user: config.auth.mail.id,
     pass: config.auth.mail.password,
   },
 });
@@ -59,7 +59,7 @@ exports.signUp = async (request, response) => {
   });
   const createdUser = await newUser.save();
   const reference = generateUrlWithToken(appEndpoint, token);
-  const data = {
+  const mailData = {
     to: email,
     from: EMAIL,
     subject: 'Confirm registration!',
@@ -68,7 +68,7 @@ exports.signUp = async (request, response) => {
         <a href=${reference}>Follow this to confirm</a>
       </div>`,
   };
-  await smtpTransportSendMail(data);
+  await smtpTransportSendMail(mailData);
   response.status(200).json({ message: 'New user has been created', data: createdUser });
 };
 

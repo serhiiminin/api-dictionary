@@ -40,3 +40,12 @@ app.use((error, request, response, next) => {
 });
 
 module.exports = app;
+
+// const port = config.env.port || 8000;
+//
+// const index = app.listen(port, () => {
+//   const host = index.address().address;
+//   const port = index.address().port;
+//
+//   console.log('App listening at http://%s:%s', host, port);
+// });
