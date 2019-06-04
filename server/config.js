@@ -1,23 +1,24 @@
 require('dotenv').config();
 
 const {
+  FACEBOOK_GRAPH_QL,
+  GOOGLE_API_KEY,
+  GOOGLE_CALLBACK_URL,
+  GOOGLE_CHECK_TOKEN,
   GOOGLE_CLIENT_ID,
   GOOGLE_CLIENT_SECRET,
-  GOOGLE_CALLBACK_URL,
-  GOOGLE_API_KEY,
   GOOGLE_CSE_ID,
-  WORD_API_KEY,
-  WORD_ENDPOINT,
-  MONGODB_URL,
-  PORT,
+  GOOGLE_USER_URL,
   JWT_SECRET_KEY,
   MAILER_EMAIL_ID,
-  MAILER_PASSWORD,
   MAILER_HOST,
+  MAILER_PASSWORD,
   MAILER_PORT,
-  FACEBOOK_GRAPH_QL,
-  GOOGLE_CHECK_TOKEN,
-  GOOGLE_USER_URL,
+  MONGODB_URL,
+  PORT,
+  SEND_GRID_API_KEY,
+  WORD_API_KEY,
+  WORD_ENDPOINT,
 } = process.env;
 
 module.exports = {
@@ -40,6 +41,9 @@ module.exports = {
     },
   },
   auth: {
+    sendGrid: {
+      apiKey: SEND_GRID_API_KEY,
+    },
     mail: {
       host: MAILER_HOST,
       port: MAILER_PORT,
