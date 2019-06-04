@@ -28,6 +28,7 @@
     "MAILER_PORT": "@dictionary_api_mailer_port",
     "MONGODB_URL": "@dictionary_api_mongodb_url",
     "PORT": "@dictionary_api_port",
+    "SEND_GRID_API_KEY": "@dictionary_api_send_grid_api_key",
     "WORD_API_KEY": "@dictionary_api_word_api_key",
     "WORD_ENDPOINT": "@dictionary_api_word_endpoint"
   }
