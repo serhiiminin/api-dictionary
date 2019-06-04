@@ -4,8 +4,8 @@ const bcrypt = require('bcryptjs');
 const User = require('../../models/users');
 const config = require('../../config');
 const dateUtils = require('../../utils/date');
-const boom = require('boom');
 const sgMail = require('@sendgrid/mail');
+const boom = require('boom');
 
 sgMail.setApiKey(config.auth.sendGrid.apiKey);
 
@@ -41,13 +41,6 @@ exports.signUp = async (request, response) => {
 
   const passwordHash = await bcrypt.hash(password, 10);
   const token = await jwtSign({ email }, JWT_SECRET_KEY, { expiresIn: '1h' });
-  const newUser = new User({
-    name,
-    email,
-    password: passwordHash,
-    expires: getTokenExpirationDate(),
-  });
-  const createdUser = await newUser.save();
   const reference = generateUrlWithToken(appEndpoint, token);
   const mailData = {
     to: email,
@@ -59,6 +52,15 @@ exports.signUp = async (request, response) => {
       </div>`,
   };
   await sgMail.send(mailData);
+
+  const newUser = new User({
+    name,
+    email,
+    password: passwordHash,
+    expires: getTokenExpirationDate(),
+  });
+  const createdUser = await newUser.save();
+
   response.status(200).json({ message: 'New user has been created', data: createdUser });
 };
 
