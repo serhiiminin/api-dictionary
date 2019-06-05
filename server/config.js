@@ -1,6 +1,7 @@
 require('dotenv').config();
 
 const {
+  DATAMUSE_SUGGESTION_ENDPOINT,
   FACEBOOK_GRAPH_QL,
   GOOGLE_API_KEY,
   GOOGLE_CALLBACK_URL,
@@ -32,6 +33,9 @@ module.exports = {
     url: MONGODB_URL,
   },
   endpoints: {
+    datamuse: {
+      suggestions: DATAMUSE_SUGGESTION_ENDPOINT,
+    },
     facebook: {
       graphQl: FACEBOOK_GRAPH_QL,
     },

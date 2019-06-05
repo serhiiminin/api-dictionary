@@ -64,7 +64,7 @@ exports.delete = async (request, response) => {
   const { id } = request.params;
   const word = await Word.findByIdAndRemove(id);
   if (!word) {
-    throw boom.notFound(`Word with id ${params.id} is not found`);
+    throw boom.notFound(`Word with id ${id} is not found`);
   }
   response.send({ message: 'Word deleted successfully!' });
 };
@@ -83,19 +83,44 @@ exports.learnWord = async (request, response) => {
   response.send(word);
 };
 
+const mergeArrays = (data, field) =>
+  Array.from(new Set(data.reduce((res, val) => (val[field] ? [...res, ...val[field]] : [...res]), [])));
+
+const normalizeWord = (wordData = {}) => {
+  const { results = [], ...rest } = wordData;
+
+  return {
+    examples: mergeArrays(results, 'examples'),
+    definitions: results.map(item => item.definition),
+    similarTo: mergeArrays(results, 'similarTo'),
+    synonyms: mergeArrays(results, 'synonyms'),
+    antonyms: mergeArrays(results, 'antonyms'),
+    partOfSpeech: Array.from(new Set(results.map(item => item.partOfSpeech))),
+    ...rest,
+  };
+};
+
 exports.search = async (request, response) => {
   const { word } = request.body;
   if (!word) {
     throw boom.badRequest('Provide the word to search');
   }
-  const foundWord = await fetch(urlJoin(config.auth.word.endpoint, word), {
+  const wordApiEndpoint = urlJoin(config.auth.word.endpoint, word);
+  const wordApiParams = {
     headers: {
       'X-Mashape-Key': WORD_API_KEY,
       Accept: 'application/json',
     },
-  }).then(responseToJson);
+  };
+  const foundWord = await fetch(wordApiEndpoint, wordApiParams).then(responseToJson);
+  const datamuseSuggestionEndpoint = `${config.endpoints.datamuse.suggestions}${word}`;
+  const options = await fetch(datamuseSuggestionEndpoint)
+    .then(responseToJson)
+    .then(items => items.map(({ word }) => word));
+
   response.send({
     transcription: (foundWord.pronunciation && foundWord.pronunciation.all) || '',
-    ...foundWord,
+    options,
+    ...normalizeWord(foundWord),
   });
 };
