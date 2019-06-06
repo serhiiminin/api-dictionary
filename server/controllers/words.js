@@ -101,7 +101,8 @@ const normalizeWord = (wordData = {}) => {
 };
 
 exports.search = async (request, response) => {
-  const { word } = request.body;
+  const { body } = request;
+  const { word } = body;
   if (!word) {
     throw boom.badRequest('Provide the word to search');
   }

@@ -13,6 +13,7 @@
     { "src": "/words/(.*)", "dest": "/server/lambdas/words.js" }
   ],
   "env": {
+    "DATAMUSE_SUGGESTION_ENDPOINT": "@dictionary_api_datamuse_suggestion_endpoint",
     "FACEBOOK_GRAPH_QL": "@dictionary_api_facebook_graph_ql",
     "GOOGLE_API_KEY": "@dictionary_api_google_api_key",
     "GOOGLE_CALLBACK_URL": "@dictionary_api_google_callback_url",

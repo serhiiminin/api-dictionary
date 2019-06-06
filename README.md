@@ -2,18 +2,30 @@
 
 ## AUTH
 
+**Token response**:
+
+```json
+{
+  "token": "{token}",
+  "userId": "{id}",
+  "expiresAt": "{iso_date}"
+}
+```
+
 ### BASIC
 
 #### _Sign up_
 
-**endpoint**: `/auth/basic/sign-up`  
-**method**: `POST`  
-**data**:
-
 ```json
 {
-  "email": "String(email)",
-  "password": "String"
+  "endpoint": "/auth/basic/sign-up",
+  "headers": {
+    "method": "POST"
+  },
+  "body": {
+    "email": "example@company.com",
+    "password": "strongPassword"
+  }
 }
 ```
 
@@ -21,14 +33,16 @@
 
 #### _Log in_
 
-**endpoint**: `/auth/basic/log-in`  
-**method**: `POST`  
-**data**:
-
 ```json
 {
-  "email": "String(email)",
-  "password": "String"
+  "endpoint": "/auth/basic/log-in",
+  "headers": {
+    "method": "POST"
+  },
+  "body": {
+    "email": "example@company.com",
+    "password": "strongPassword"
+  }
 }
 ```
 
@@ -36,13 +50,15 @@
 
 #### _Forgot password_
 
-**endpoint**: `/auth/basic/forgot-password`  
-**method**: `POST`  
-**data**:
-
 ```json
 {
-  "email": "String(email)"
+  "endpoint": "/auth/basic/forgot-password",
+  "headers": {
+    "method": "POST"
+  },
+  "body": {
+    "email": "example@company.com"
+  }
 }
 ```
 
@@ -50,35 +66,27 @@
 
 #### _Reset password_
 
-**endpoint**: `/auth/basic/reset-password?token={token}`  
-**method**: `GET`  
-<br/>
+```json
+{
+  "endpoint": "/auth/basic/reset-password?token={token}",
+  "headers": {
+    "method": "GET"
+  }
+}
+
+```
 
 ### GOOGLE
 
 #### _Sign up_
 
-**REQUEST**:
-
-**endpoint**: `/auth/google/sign-up`  
-**method**: `GET`
-**headers**:
-
 ```json
 {
-  "proxy-authorization": "Bearer {google_access_token}"
-}
-```
-
-<br/>
-
-**RESPONSE**:
-
-```json
-{
-  "token": "String",
-  "userId": "String",
-  "expiresAt": "String"
+  "endpoint": "/auth/google/sign-up",
+  "headers": {
+    "method": "GET",
+    "authorization": "Bearer {google_access_token}"
+  }
 }
 ```
 
@@ -86,25 +94,13 @@
 
 #### _Log in_
 
-**endpoint**: `/auth/google/log-in`  
-**method**: `GET`  
-**headers**:
-
 ```json
 {
-  "proxy-authorization": "Bearer {google_access_token}"
-}
-```
-
-<br/>
-
-**RESPONSE**:
-
-```json
-{
-  "token": "String",
-  "userId": "String",
-  "expiresAt": "String"
+  "endpoint": "/auth/google/log-in",
+  "headers": {
+    "method": "GET",
+    "authorization": "Bearer {google_access_token}"
+  }
 }
 ```
 
@@ -112,52 +108,24 @@
 
 #### _Sign up_
 
-**REQUEST**:
-
-**endpoint**: `/auth/facebook/sign-up`  
-**method**: `GET`
-**headers**:
-
 ```json
 {
-  "proxy-authorization": "Bearer {facebook_access_token}"
+  "endpoint": "/auth/facebook/sign-up",
+  "headers": {
+    "method": "GET",
+    "authorization": "Bearer {facebook_access_token}"
+  }
 }
 ```
-
-<br/>
-
-**RESPONSE**:
-
-```json
-{
-  "token": "String",
-  "userId": "String",
-  "expiresAt": "String"
-}
-```
-
-<br/>
 
 #### _Log in_
 
-**endpoint**: `/auth/facebook/log-in`  
-**method**: `GET`  
-**headers**:
-
 ```json
 {
-  "proxy-authorization": "Bearer {facebook_access_token}"
-}
-```
-
-<br/>
-
-**RESPONSE**:
-
-```json
-{
-  "token": "String",
-  "userId": "String",
-  "expiresAt": "String"
+  "endpoint": "/auth/facebook/log-in",
+  "headers": {
+    "method": "GET",
+    "authorization": "Bearer {facebook_access_token}"
+  }
 }
 ```
