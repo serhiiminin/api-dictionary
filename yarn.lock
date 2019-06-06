@@ -995,10 +995,10 @@ http-signature@~1.2.0:
     jsprim "^1.2.2"
     sshpk "^1.7.0"
 
-husky@2.3.0:
-  version "2.3.0"
-  resolved "https://npm.globit.com/husky/-/husky-2.3.0.tgz#8b78ed24d763042df7fd899991985d65a976dd13"
-  integrity sha512-A/ZQSEILoq+mQM3yC3RIBSaw1bYXdkKnyyKVSUiJl+iBjVZc5LQEXdGY1ZjrDxC4IzfRPiJ0IqzEQGCN5TQa/A==
+husky@2.4.0:
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/husky/-/husky-2.4.0.tgz#1bac7c44588f6e91f808b72efc82d24a57194f36"
+  integrity sha512-3k1wuZU20gFkphNWMjh2ISCFaqfbaLY7R9FST2Mj9HeRhUK9ydj9qQR8qfXlog3EctVGsyeilcZkIT7uBZDDVA==
   dependencies:
     cosmiconfig "^5.2.0"
     execa "^1.0.0"
@@ -1380,10 +1380,10 @@ mongoose-legacy-pluralize@1.0.2:
   resolved "https://npm.globit.com/mongoose-legacy-pluralize/-/mongoose-legacy-pluralize-1.0.2.tgz#3ba9f91fa507b5186d399fb40854bff18fb563e4"
   integrity sha512-Yo/7qQU4/EyIS8YDFSeenIvXxZN+ld7YdV9LqFVQJzTLye8unujAWPZ4NWKfFA+RNjh+wvTWKY9Z3E5XM6ZZiQ==
 
-mongoose@5.5.12:
-  version "5.5.12"
-  resolved "https://registry.yarnpkg.com/mongoose/-/mongoose-5.5.12.tgz#02c96a8bbddbb73f8b86e0c6e44c61288b584430"
-  integrity sha512-G6KfSHfxfoBw7zpRRdbG1GzLZSkY71nY3CMHMMfg5o+xVAGc3Q78Qu+kA3P+Ka15KHLu6LNyvAc1Zvtv1JhGfw==
+mongoose@5.5.13:
+  version "5.5.13"
+  resolved "https://registry.yarnpkg.com/mongoose/-/mongoose-5.5.13.tgz#3890052be742d069f97c8b03c278f0b44628e93c"
+  integrity sha512-+RueYqq7fb8gu4wXkUsPa2B0R4JWnyYuN0+s3BCPpe3Rn3XndPPKhrx9OId3fMiuGX4jbG/HL2ZDoliiftDY7w==
   dependencies:
     async "2.6.2"
     bson "~1.1.1"
