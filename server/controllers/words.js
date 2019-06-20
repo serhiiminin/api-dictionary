@@ -10,13 +10,13 @@ const WORD_API_KEY = config.auth.word.apiKey;
 const responseToJson = response => response.json();
 
 exports.create = async (request, response) => {
-  const { authData } = request;
+  const { authData, body } = request;
   const newWord = new Word({
     created: new Date().toISOString(),
     updated: new Date().toISOString(),
     lastLearnt: new Date(0),
     ownerId: authData._id,
-    ...request.body,
+    ...body,
   });
   const createdWord = await newWord.save();
   response.send(createdWord);

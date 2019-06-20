@@ -66,4 +66,9 @@ module.exports = {
       apiKey: WORD_API_KEY,
     },
   },
+  mongoose: {
+    useCreateIndex: true,
+    useFindAndModify: false,
+    useNewUrlParser: true,
+  },
 };
