@@ -28,6 +28,7 @@ const UserSchema = mongoose.Schema({
   },
   password: String,
   expires: Date,
+  searchHistory: [mongoose.Schema.Types.Mixed],
 });
 
 module.exports = mongoose.model('User', UserSchema);

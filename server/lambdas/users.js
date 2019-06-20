@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const usersRouter = require('../routes/users');
 
 mongoose.set('useCreateIndex', true);
+mongoose.set('useFindAndModify', true);
 mongoose.Promise = global.Promise;
 mongoose
   .connect(config.mongo.url, { useNewUrlParser: true })

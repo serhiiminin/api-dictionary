@@ -2,6 +2,7 @@ const fetch = require('isomorphic-unfetch');
 const boom = require('boom');
 const urlJoin = require('url-join');
 const Word = require('../models/words');
+const User = require('../models/users');
 const config = require('../config');
 
 const WORD_API_KEY = config.auth.word.apiKey;
@@ -11,9 +12,9 @@ const responseToJson = response => response.json();
 exports.create = async (request, response) => {
   const { authData } = request;
   const newWord = new Word({
-    dateCreated: new Date(Date.now()).toISOString(),
-    dateLastUpdated: new Date(Date.now()).toISOString(),
-    dateLastLearnt: new Date(0),
+    created: new Date().toISOString(),
+    updated: new Date().toISOString(),
+    lastLearnt: new Date(0),
     ownerId: authData._id,
     ...request.body,
   });
@@ -39,7 +40,7 @@ exports.findAll = async (request, response) => {
     .limit(query.limit || 10000)
     .skip(query.skip || 0)
     .sort({
-      [query.sortBy || 'dateLastUpdated']: query.sortDirection === -1 ? -1 : 1,
+      [query.sortBy || 'updated']: query.sortDirection === -1 ? -1 : 1,
     });
   response.send({
     items: words,
@@ -50,7 +51,7 @@ exports.findAll = async (request, response) => {
 exports.update = async (request, response) => {
   const { body, params } = request;
   const updatedWord = {
-    dateLastUpdated: new Date(Date.now()).toISOString(),
+    updated: new Date().toISOString(),
     ...body,
   };
   const word = await Word.findByIdAndUpdate(params.id, updatedWord, { new: true });
@@ -72,13 +73,13 @@ exports.delete = async (request, response) => {
 exports.learnWord = async (request, response) => {
   const { id } = request.params;
   const updatedWord = {
-    dateLastLearnt: new Date(Date.now()).toISOString(),
+    lastLearnt: new Date().toISOString(),
     $inc: { timesLearnt: 1 },
   };
 
-  const word = await Word.findByIdAndUpdate(id, updatedWord, { new: true });
+  const word = await Word.findByIdAndUpdate(id, updatedWord, { new: true, insert: true });
   if (!word) {
-    throw boom.notFound(`Word with id ${params.id} is not found`);
+    throw boom.notFound(`Word with id ${id} is not found`);
   }
   response.send(word);
 };
@@ -101,7 +102,7 @@ const normalizeWord = (wordData = {}) => {
 };
 
 exports.search = async (request, response) => {
-  const { body } = request;
+  const { body, authData } = request;
   const { word } = body;
   if (!word) {
     throw boom.badRequest('Provide the word to search');
@@ -118,6 +119,20 @@ exports.search = async (request, response) => {
   const options = await fetch(datamuseSuggestionEndpoint)
     .then(responseToJson)
     .then(items => items.map(({ word }) => word));
+
+  const { _id } = authData;
+  const user = await User.findById(_id);
+  const { searchHistory = [] } = user;
+  const dataToUpdate = {
+    searchHistory: [
+      ...searchHistory,
+      {
+        word,
+        date: new Date().toISOString(),
+      },
+    ],
+  };
+  await User.findByIdAndUpdate(_id, dataToUpdate, { new: true, insert: true });
 
   response.send({
     transcription: (foundWord.pronunciation && foundWord.pronunciation.all) || '',

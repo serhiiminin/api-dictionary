@@ -1,21 +1,17 @@
 const mongoose = require('mongoose');
 
 const WordSchema = mongoose.Schema({
-  word: String,
-  transcription: String,
+  antonyms: [String],
+  definitions: [String],
+  examples: [String],
   gif: String,
+  options: [String],
+  partOfSpeech: [String],
+  similarTo: [String],
+  synonyms: [String],
+  transcription: String,
+  word: String,
   ownerId: String,
-  results: [
-    {
-      definition: String,
-      partOfSpeech: String,
-      antonyms: [String],
-      synonyms: [String],
-      examples: [String],
-      hasTypes: [String],
-      derivation: [String],
-    },
-  ],
   dateCreated: Date,
   dateLastUpdated: Date,
   timesLearnt: {
