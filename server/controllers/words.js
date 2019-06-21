@@ -101,6 +101,8 @@ const normalizeWord = (wordData = {}) => {
   };
 };
 
+const getUniqueWords = words => Array.from(new Set(words.map(({ word }) => word.split(' ')[0])));
+
 exports.search = async (request, response) => {
   const { body, authData } = request;
   const { word } = body;
@@ -118,7 +120,7 @@ exports.search = async (request, response) => {
   const datamuseSuggestionEndpoint = `${config.endpoints.datamuse.suggestions}${word}`;
   const options = await fetch(datamuseSuggestionEndpoint)
     .then(responseToJson)
-    .then(items => items.map(({ word }) => word));
+    .then(getUniqueWords);
 
   const { _id } = authData;
   const user = await User.findById(_id);
