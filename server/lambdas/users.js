@@ -16,6 +16,7 @@ mongoose
 const app = express();
 
 app.use(require('cors')());
+app.use(express.json());
 app.use(usersRouter);
 app.use((error, request, response, next) => {
   if (error.isBoom) {

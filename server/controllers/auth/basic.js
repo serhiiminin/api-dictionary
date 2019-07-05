@@ -26,7 +26,7 @@ const validateConditions = conditions => {
 };
 
 exports.signUp = async (request, response) => {
-  const { name, email, password, passwordConfirm, appEndpoint } = request.body;
+  const { name, email, password, passwordConfirm, appEndpoint } = request.body || {};
   validateConditions([
     (!email || !password) && 'email and password are required fields',
     password && password.length < 8 && "password's length shouldn't less than 8 characters",
@@ -65,7 +65,7 @@ exports.signUp = async (request, response) => {
 };
 
 exports.confirm = async (request, response) => {
-  const { email } = request.authData;
+  const { email } = request.authData || {};
   const user = await User.findOne({ email });
   const { _id, active } = user || {};
 
@@ -90,7 +90,7 @@ exports.confirm = async (request, response) => {
 };
 
 exports.logIn = async (request, response) => {
-  const { email, password } = request.body;
+  const { email, password } = request.body || {};
 
   validateConditions([
     (!email || !password) && 'email and password are required fields',
@@ -112,7 +112,7 @@ exports.logIn = async (request, response) => {
 };
 
 exports.forgotPassword = async (request, response) => {
-  const { email, appEndpoint } = request.body;
+  const { email, appEndpoint } = request.body || {};
   const user = await User.findOne({ email });
   if (!user) {
     throw boom.notFound('user with this email is not found');
@@ -134,7 +134,7 @@ exports.forgotPassword = async (request, response) => {
 };
 
 exports.resetPassword = async (request, response) => {
-  const { email, _id } = request.authData;
+  const { email, _id } = request.authData || {};
   const { password, passwordConfirm } = request.body;
   if (password !== passwordConfirm) {
     throw boom.badData('passwords dont match');
