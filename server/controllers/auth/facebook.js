@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
 const util = require('util');
-const boom = require('boom');
+const boom = require('@hapi/boom');
 const mongoose = require('mongoose');
 const User = require('../../models/users');
 const fetch = require('isomorphic-unfetch');

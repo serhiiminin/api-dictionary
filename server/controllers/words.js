@@ -1,5 +1,5 @@
 const fetch = require('isomorphic-unfetch');
-const boom = require('boom');
+const boom = require('@hapi/boom');
 const urlJoin = require('url-join');
 const Word = require('../models/words');
 const User = require('../models/users');

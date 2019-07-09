@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
 const util = require('util');
-const boom = require('boom');
+const boom = require('@hapi/boom');
 const config = require('../config');
 const JWT_SECRET_KEY = config.jwt.secretKey;
 

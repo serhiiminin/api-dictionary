@@ -1,4 +1,4 @@
-const boom = require('boom');
+const boom = require('@hapi/boom');
 const User = require('../models/users');
 
 exports.create = async (request, response) => {

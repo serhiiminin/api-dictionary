@@ -1,6 +1,6 @@
 const express = require('express');
 const config = require('../config');
-const boom = require('boom');
+const boom = require('@hapi/boom');
 const mongoose = require('mongoose');
 const authRouter = require('../routes/auth');
 

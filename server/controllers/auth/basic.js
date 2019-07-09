@@ -5,7 +5,7 @@ const User = require('../../models/users');
 const config = require('../../config');
 const dateUtils = require('../../utils/date');
 const sgMail = require('@sendgrid/mail');
-const boom = require('boom');
+const boom = require('@hapi/boom');
 
 sgMail.setApiKey(config.auth.sendGrid.apiKey);
 
