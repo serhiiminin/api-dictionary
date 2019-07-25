@@ -12,13 +12,13 @@ const WordSchema = mongoose.Schema({
   transcription: String,
   word: String,
   ownerId: String,
-  dateCreated: Date,
-  dateLastUpdated: Date,
   timesLearnt: {
     type: Number,
     default: 0,
   },
-  dateLastLearnt: Date,
+  created: Date,
+  updated: Date,
+  lastLearnt: Date,
 });
 
 module.exports = mongoose.model('Word', WordSchema);

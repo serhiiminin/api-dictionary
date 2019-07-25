@@ -3,8 +3,8 @@ const User = require('../models/users');
 
 exports.create = async (request, response) => {
   const newUser = new User({
-    dateCreated: new Date(Date.now()).toISOString(),
-    dateLastUpdated: new Date(Date.now()).toISOString(),
+    created: new Date(Date.now()).toISOString(),
+    updated: new Date(Date.now()).toISOString(),
     ...request.body,
   });
   const createdUser = await newUser.save();
@@ -23,7 +23,7 @@ exports.findOne = async (request, response) => {
 exports.update = async (request, response) => {
   const { id } = request.params;
   const updatedUser = {
-    dateLastUpdated: new Date(Date.now()).toISOString(),
+    updated: new Date(Date.now()).toISOString(),
     ...request.body,
   };
   const user = await User.findByIdAndUpdate(id, updatedUser, { new: true });
