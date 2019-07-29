@@ -33,15 +33,13 @@ exports.findOne = async (request, response) => {
 
 exports.findAll = async (request, response) => {
   const { authData } = request;
-  const { query = {}, ...restParams } = request.body;
+  const { query = {}, limit, skip, sortBy, sortDirection } = request.body;
   const ownerParam = { ownerId: authData._id };
-  const searchParams = Object.keys(restParams).length > 0 ? Object.assign(restParams, ownerParam) : ownerParam;
+  const searchParams = Object.keys(query).length > 0 ? Object.assign({}, query, ownerParam) : ownerParam;
   const words = await Word.find(searchParams)
-    .limit(query.limit || 10000)
-    .skip(query.skip || 0)
-    .sort({
-      [query.sortBy || 'updated']: query.sortDirection === -1 ? -1 : 1,
-    });
+    .limit(limit || 10000)
+    .skip(skip || 0)
+    .sort({ [sortBy || 'created']: sortDirection === -1 ? -1 : 1 });
   response.send({
     items: words,
     count: words.length,
