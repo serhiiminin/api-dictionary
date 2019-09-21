@@ -13,7 +13,7 @@
   "license": "ISC",
   "author": "Serhii Minin",
   "dependencies": {
-    "@hapi/boom": "7.4.7",
+    "@hapi/boom": "7.4.9",
     "@sendgrid/mail": "6.4.0",
     "bcryptjs": "2.4.3",
     "cors": "2.8.5",
