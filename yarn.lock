@@ -90,10 +90,10 @@
     lodash "^4.17.11"
     to-fast-properties "^2.0.0"
 
-"@hapi/boom@7.4.10":
-  version "7.4.10"
-  resolved "https://registry.yarnpkg.com/@hapi/boom/-/boom-7.4.10.tgz#fae360a8f6a52fbb5bfbe179982d74351ee1df1d"
-  integrity sha512-QCeJhQTtY8U3N5H8IO/PMp6sMSCW0189ylquqfHX9PJkxSHvqKAgNzKvg5APjOKK1dcK8obTeg/UICkb3b3fXw==
+"@hapi/boom@8.0.1":
+  version "8.0.1"
+  resolved "https://registry.yarnpkg.com/@hapi/boom/-/boom-8.0.1.tgz#13f1f2f2a3abfb0787c79e35e238c8aff6aa1661"
+  integrity sha512-SnBM2GzEYEA6AGFKXBqNLWXR3uNBui0bkmklYXX1gYtevVhDTy2uakwkSauxvIWMtlANGRhzChYg95If3FWCwA==
   dependencies:
     "@hapi/hoek" "8.x.x"
 
