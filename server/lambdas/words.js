@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors');
 const config = require('../config');
 const boom = require('@hapi/boom');
 const mongoose = require('mongoose');
@@ -15,7 +16,7 @@ mongoose
 
 const app = express();
 
-app.use(require('cors')());
+app.use(cors());
 app.use(express.json());
 app.use(wordsRouter);
 app.use((error, request, response, next) => {
