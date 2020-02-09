@@ -1,16 +1,17 @@
 const { Router } = require('express');
-const users = require('../controllers/users');
+const usersController = require('../controllers/users');
 const isTokenValid = require('../utils/auth').isTokenValid;
 const asyncMiddleware = require('../utils/auth').asyncMiddleware;
 const routes = require('./routes');
 
 const router = Router();
+const { users } = routes;
 
 router.use(asyncMiddleware(isTokenValid));
 
-router.post(routes.users.create, asyncMiddleware(users.create));
-router.get(routes.users.read, asyncMiddleware(users.findOne));
-router.put(routes.users.update, asyncMiddleware(users.update));
-router.delete(routes.users.delete, asyncMiddleware(users.delete));
+router.post(users.create, asyncMiddleware(usersController.create));
+router.get(users.read, asyncMiddleware(usersController.findOne));
+router.put(users.update, asyncMiddleware(usersController.update));
+router.delete(users.delete, asyncMiddleware(usersController.delete));
 
 module.exports = router;
