@@ -124,29 +124,29 @@
   resolved "https://registry.yarnpkg.com/@hapi/hoek/-/hoek-9.0.0.tgz#ba83436edfac1d1ffd0e94797d43419c20ad49b8"
   integrity sha512-XxD4A5YMIH70ddjG7BJBUz7RWVQAwIP/36Eoyh0DsaWp92OAeXkrbtSEaYkynBPTsN9Uv2mZq9QWZYILl2Svrw==
 
-"@sendgrid/client@^7.1.1":
-  version "7.1.1"
-  resolved "https://registry.yarnpkg.com/@sendgrid/client/-/client-7.1.1.tgz#09a25e58ac7e5321d66807e7110ff0fb61bb534f"
-  integrity sha512-V2BmOO81wHNmbTDwTJ07Olb9dWrj1G19xK4crwds68b9R0w05aOWDddZTvpn9mZnHwIJYqcZcBJuhdHDejuSHg==
+"@sendgrid/client@^7.2.0":
+  version "7.2.0"
+  resolved "https://registry.yarnpkg.com/@sendgrid/client/-/client-7.2.0.tgz#485112263458e177b8e98817fe12d6bf221b502c"
+  integrity sha512-ORlsU2cErvCUZsx96d5jaCCOajZ3kLiTInwr3yxFiXzqVRfP1ipCEajFxcS2LZDMoww/uCSflRcOVLmttBdJbw==
   dependencies:
-    "@sendgrid/helpers" "^7.0.1"
+    "@sendgrid/helpers" "^7.2.0"
     axios "^0.19.2"
 
-"@sendgrid/helpers@^7.0.1":
-  version "7.0.1"
-  resolved "https://registry.yarnpkg.com/@sendgrid/helpers/-/helpers-7.0.1.tgz#b97debc793ed3f9f56102e12c2a6d2bbbf0ffb78"
-  integrity sha512-i/zsissq1upgdywtuJKysaplJJZC24GdtEKiJC1IRlXvBHzIjH4eU+rqUFO8h+hGji3UMURGgMFuLUXTUYvZ9w==
+"@sendgrid/helpers@^7.2.0":
+  version "7.2.0"
+  resolved "https://registry.yarnpkg.com/@sendgrid/helpers/-/helpers-7.2.0.tgz#75cbde76815fa0f8b7966b3e2a0650fc125c3276"
+  integrity sha512-Ps8rc3xFpaQvIWoW1zlWi9G7QnxYwXFOeq0915DzXf5knoiOgXdFk/XBXbCFjr2lf/JIzjgFUtAV/dN8Z8jzHw==
   dependencies:
     chalk "^2.0.1"
     deepmerge "^4.2.2"
 
-"@sendgrid/mail@7.1.1":
-  version "7.1.1"
-  resolved "https://registry.yarnpkg.com/@sendgrid/mail/-/mail-7.1.1.tgz#26191594722d5961de1b61cd9c48fa9a69fd197b"
-  integrity sha512-VXdJ9J6vBNMw+wMIGFRvms6EmV6pvoRHMWoLJGweHlsZDnvmK3rWUnnNaS3OdDQ3A8B5bMv2WKsEnHsMZ6iDUg==
+"@sendgrid/mail@7.2.0":
+  version "7.2.0"
+  resolved "https://registry.yarnpkg.com/@sendgrid/mail/-/mail-7.2.0.tgz#262fde8a93093074fc873c42103cfa842134327b"
+  integrity sha512-iAA4LCd4eBpBVsYVgHPUd1B9CSwDVS/LNApT4Wn79nikAEfkJCT2n3BipU6CO2vPYUJNRQiStJ55RfdKe9Hulg==
   dependencies:
-    "@sendgrid/client" "^7.1.1"
-    "@sendgrid/helpers" "^7.0.1"
+    "@sendgrid/client" "^7.2.0"
+    "@sendgrid/helpers" "^7.2.0"
 
 "@types/color-name@^1.1.1":
   version "1.1.1"
