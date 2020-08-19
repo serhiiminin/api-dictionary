@@ -14,7 +14,7 @@
   "author": "Serhii Minin",
   "dependencies": {
     "@hapi/boom": "9.1.0",
-    "@sendgrid/mail": "7.2.3",
+    "@sendgrid/mail": "7.2.4",
     "bcryptjs": "2.4.3",
     "cors": "2.8.5",
     "dotenv": "8.2.0",
