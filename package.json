@@ -17,7 +17,7 @@
     "@sendgrid/mail": "7.4.2",
     "bcryptjs": "2.4.3",
     "cors": "2.8.5",
-    "dotenv": "8.2.0",
+    "dotenv": "9.0.2",
     "express": "4.17.1",
     "isomorphic-unfetch": "3.1.0",
     "jsonwebtoken": "8.5.1",
